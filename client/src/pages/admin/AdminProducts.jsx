@@ -314,7 +314,7 @@ const AdminProducts = () => {
                        <img
   src={`${BACKEND_URL}${img}`}
   alt=""
-  className="w-24 h-24 rounded-xl object-cover border border-brand-border"
+  className="w-24 h-24 rounded-xl object-contain border border-brand-border"
 />
 
                         <button
@@ -378,7 +378,7 @@ const AdminProducts = () => {
                       <img
   src={`${BACKEND_URL}${product.images[0]}`}
   alt={product.name}
-  className="w-14 h-14 rounded-xl object-cover"
+  className="w-14 h-14 rounded-xl object-contain"
 />
                     ) : (
                       <div className="w-14 h-14 rounded-xl bg-brand-sand"></div>
