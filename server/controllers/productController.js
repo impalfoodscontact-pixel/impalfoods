@@ -1,5 +1,7 @@
 const Product = require('../models/Product');
-
+const sharp = require('sharp');
+const fs = require('fs');
+const path = require('path');
 // @desc Get all products (with optional category filter)
 // @route GET /api/products
 const getProducts = async (req, res) => {
