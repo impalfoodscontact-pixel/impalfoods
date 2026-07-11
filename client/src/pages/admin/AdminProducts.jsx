@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from '../../utils/api';
 import AdminLayout from './AdminLayout';
+const BACKEND_URL = "https://impalfoods.onrender.com";
 
 const emptyForm = {
   name: '',
@@ -311,10 +312,10 @@ const AdminProducts = () => {
                         className="relative"
                       >
                         <img
-                          src={img}
-                          alt=""
-                          className="w-24 h-24 rounded-xl object-cover border border-brand-border"
-                        />
+  src={`${BACKEND_URL}${product.images[0]}`}
+  alt={product.name}
+  className="w-14 h-14 rounded-xl object-cover"
+/>
 
                         <button
                           type="button"
