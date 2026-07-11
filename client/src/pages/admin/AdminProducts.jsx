@@ -207,16 +207,15 @@ const AdminProducts = () => {
                 Category
               </label>
 
-              <select
-                value={form.category}
-                onChange={(e) =>
-                  setForm({ ...form, category: e.target.value })
-                }
-                className={inputClass}
-              >
-                <option value="Sugar">Sugar</option>
-                <option value="Poha">Poha</option>
-              </select>
+             <input
+  type="text"
+  value={form.category}
+  onChange={(e) =>
+    setForm({ ...form, category: e.target.value })
+  }
+  placeholder="Enter category"
+  className={inputClass}
+/>
             </div>
           </div>
 
