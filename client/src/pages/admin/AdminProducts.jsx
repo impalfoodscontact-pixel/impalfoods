@@ -311,10 +311,10 @@ const AdminProducts = () => {
                         key={img}
                         className="relative"
                       >
-                        <img
-  src={`${BACKEND_URL}${product.images[0]}`}
-  alt={product.name}
-  className="w-14 h-14 rounded-xl object-cover"
+                       <img
+  src={`${BACKEND_URL}${img}`}
+  alt=""
+  className="w-24 h-24 rounded-xl object-cover border border-brand-border"
 />
 
                         <button
@@ -376,10 +376,10 @@ const AdminProducts = () => {
                   <td className="p-4">
                     {product.images?.length > 0 ? (
                       <img
-                        src={product.images[0]}
-                        alt={product.name}
-                        className="w-14 h-14 rounded-xl object-cover"
-                      />
+  src={`${BACKEND_URL}${product.images[0]}`}
+  alt={product.name}
+  className="w-14 h-14 rounded-xl object-cover"
+/>
                     ) : (
                       <div className="w-14 h-14 rounded-xl bg-brand-sand"></div>
                     )}
