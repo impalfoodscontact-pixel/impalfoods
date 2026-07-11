@@ -4,6 +4,7 @@ import api from '../utils/api';
 import ProductCard from '../components/ProductCard';
 import Layout from '../components/Layout';
 import heroImage from '../assets/hero.jpg';
+const BACKEND_URL = "https://impalfoods.onrender.com";
 
 const Home = () => {
   const [content, setContent] = useState(null);
@@ -135,10 +136,14 @@ const Home = () => {
                   </div>
 
                   <img
-                    src={featuredProducts[0]?.images?.[0]}
-                    alt={featuredProducts[0]?.name}
-                    className="w-full h-56 object-cover rounded-2xl"
-                  />
+  src={
+    featuredProducts[0]?.images?.length
+      ? `${BACKEND_URL}${featuredProducts[0].images[0]}`
+      : placeholderImg
+  }
+  alt={featuredProducts[0]?.name}
+  className="w-full h-56 object-cover rounded-2xl"
+/>
 
                   <h3 className="font-display text-2xl font-semibold text-brand-ink mt-5">
                     {featuredProducts[0]?.name}
