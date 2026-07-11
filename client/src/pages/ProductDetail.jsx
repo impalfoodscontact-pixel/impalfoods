@@ -91,7 +91,7 @@ const ProductDetail = () => {
                         activeImage === idx ? 'border-brand-accent' : 'border-transparent'
                       }`}
                     >
-                      <img src={img} alt={`${product.name} ${idx + 1}`} className="w-full h-full object-cover" />
+                      <img src={img} alt={`${product.name} ${idx + 1}`} className="w-full h-full object-contain" />
                     </button>
                   ))}
                 </div>
