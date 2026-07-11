@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
-
+const BACKEND_URL = 'https://impalfoods.onrender.com';
 const placeholderImg =
   'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNDAwIDMwMCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNGMEU4REMiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzJFMkEyNiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0Ij5JbXBhbCBGb29kczwvdGV4dD48L3N2Zz4=';
 
 const ProductCard = ({ product }) => {
-  const image = product.images && product.images.length > 0 ? product.images[0] : placeholderImg;
+  const image = product.images && product.images.length > 0
+  ? `${BACKEND_URL}${product.images[0]}`
+  : placeholderImg;
 
   return (
     <Link to={`/products/${product._id}`} className="card group block">
