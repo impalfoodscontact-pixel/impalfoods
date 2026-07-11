@@ -39,9 +39,25 @@ const createProduct = async (req, res) => {
     const { name, category, description, ingredients, featured } = req.body;
 
     let images = [];
-    if (req.files && req.files.length > 0) {
-      images = req.files.map((file) => `/uploads/${file.filename}`);
-    }
+
+if (req.files && req.files.length > 0) {
+  for (const file of req.files) {
+    const outputFile = `${Date.now()}-${path.parse(file.filename).name}.webp`;
+    const outputPath = path.join(__dirname, "..", "uploads", outputFile);
+
+    await sharp(file.path)
+      .resize(800, 800, {
+        fit: "cover",
+        position: "center",
+      })
+      .webp({ quality: 80 })
+      .toFile(outputPath);
+
+    fs.unlinkSync(file.path);
+
+    images.push(`/uploads/${outputFile}`);
+  }
+}
 
     const product = await Product.create({
       name,
@@ -78,9 +94,27 @@ const updateProduct = async (req, res) => {
     }
 
     if (req.files && req.files.length > 0) {
-      const newImages = req.files.map((file) => `/uploads/${file.filename}`);
-      product.images = [...product.images, ...newImages];
-    }
+  const newImages = [];
+
+  for (const file of req.files) {
+    const outputFile = `${Date.now()}-${path.parse(file.filename).name}.webp`;
+    const outputPath = path.join(__dirname, "..", "uploads", outputFile);
+
+    await sharp(file.path)
+      .resize(800, 800, {
+        fit: "cover",
+        position: "center",
+      })
+      .webp({ quality: 80 })
+      .toFile(outputPath);
+
+    fs.unlinkSync(file.path);
+
+    newImages.push(`/uploads/${outputFile}`);
+  }
+
+  product.images = [...product.images, ...newImages];
+}
 
     const updated = await product.save();
     res.json(updated);
