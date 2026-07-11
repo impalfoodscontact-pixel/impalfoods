@@ -142,7 +142,7 @@ const Home = () => {
       : placeholderImg
   }
   alt={featuredProducts[0]?.name}
-  className="w-full object-contain object-center h-56 rounded-2xl scale-125"
+  className="w-full object-cover object-center h-56 rounded-2xl "
 />
 
                   <h3 className="font-display text-2xl font-semibold text-brand-ink mt-5">
