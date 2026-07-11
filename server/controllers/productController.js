@@ -46,10 +46,6 @@ if (req.files && req.files.length > 0) {
     const outputPath = path.join(__dirname, "..", "uploads", outputFile);
 
     await sharp(file.path)
-      .resize(800, 800, {
-        fit: "cover",
-        position: "center",
-      })
       .webp({ quality: 80 })
       .toFile(outputPath);
 
@@ -101,10 +97,6 @@ const updateProduct = async (req, res) => {
     const outputPath = path.join(__dirname, "..", "uploads", outputFile);
 
     await sharp(file.path)
-      .resize(800, 800, {
-        fit: "cover",
-        position: "center",
-      })
       .webp({ quality: 80 })
       .toFile(outputPath);
 
