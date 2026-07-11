@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import api from '../utils/api';
 import Layout from '../components/Layout';
+const BACKEND_URL = "https://impalfoods.onrender.com";
 
 const placeholderImg =
   'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDUwIiB2aWV3Qm94PSIwIDAgNjAwIDQ1MCI+PHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9IiNGMEU4REMiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzJFMkEyNiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjMyIj5JbXBhbCBGb29kczwvdGV4dD48L3N2Zz4=';
@@ -55,7 +56,12 @@ const ProductDetail = () => {
     );
   }
 
-  const images = product.images && product.images.length > 0 ? product.images : [placeholderImg];
+ const images =
+  product.images && product.images.length > 0
+    ? product.images.map((img) =>
+        img.startsWith("http") ? img : `${BACKEND_URL}${img}`
+      )
+    : [placeholderImg];
 
   return (
     <Layout content={content}>
