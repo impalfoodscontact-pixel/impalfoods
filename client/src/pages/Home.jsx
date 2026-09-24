@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../utils/api';
 import ProductCard from '../components/ProductCard';
 import Layout from '../components/Layout';
-import heroImage from '../assets/hero.jpg';
+import heroImage from '../assets/hero.webp';
 const BACKEND_URL = "https://impalfoods.onrender.com";
 
 const Home = () => {
