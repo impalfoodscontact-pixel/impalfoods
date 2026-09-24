@@ -46,8 +46,15 @@ if (req.files && req.files.length > 0) {
     const outputPath = path.join(__dirname, "..", "uploads", outputFile);
 
     await sharp(file.path)
-      .webp({ quality: 80 })
-      .toFile(outputPath);
+  .rotate()
+  .resize({
+    width: 1200,
+    height: 1200,
+    fit: 'inside',
+    withoutEnlargement: true,
+  })
+  .webp({ quality: 80 })
+  .toFile(outputPath);
 
     fs.unlinkSync(file.path);
 
@@ -97,8 +104,15 @@ const updateProduct = async (req, res) => {
     const outputPath = path.join(__dirname, "..", "uploads", outputFile);
 
     await sharp(file.path)
-      .webp({ quality: 80 })
-      .toFile(outputPath);
+  .rotate()
+  .resize({
+    width: 1200,
+    height: 1200,
+    fit: 'inside',
+    withoutEnlargement: true,
+  })
+  .webp({ quality: 80 })
+  .toFile(outputPath);
 
     fs.unlinkSync(file.path);
 
